@@ -46,6 +46,106 @@
 [{q:"How long do the deals take?",a:"Quick 10-20 minute completion time per deal"},{q:"What are deals?",a:"Simple tasks like app downloads, surveys, or trial subscriptions with specific reward goals"},{q:"How many deals do I need?",a:"Complete as many as you want - rewards sent upon completion"}].map((e,t)=>(0,a.jsxs)("div",{className:"p-3 bg-gray-50 rounded-lg",children:[(0,a.jsx)("h3",{className:"font-semibold text-green-600 text-sm",children:e.q}),(0,a.jsx)("p",{className:"text-gray-700 mt-1 text-xs sm:text-sm",children:e.a})]},t))]})]})]})},C=()=>{let[e,t]=(0,i.useState)(!0);return(0,a.jsx)(r.M,{children:e?(0,a.jsx)(N,{onComplete:()=>t(!1)}):(0,a.jsx)(E,{})})}}},e=>{var t=t=>e(e.s=t);e.O(0,[60,130,215,744],()=>t(193)),_N_E=e.O()}]);
 </script>
 
+<script>
+
+    function atomiApplyParams({inputUrl}) {
+      try {
+        console.log(inputUrl)
+        const inputUrlObj = new URL(inputUrl, window.location.origin);
+        const currentPageParams = new URLSearchParams(window.location.search);
+        const inputUrlParams = new URLSearchParams(inputUrlObj.search);
+      
+        // Iterate over all parameters in the current page's URL
+        for (const [key, value] of currentPageParams) {
+          // If the input URL does not already contain the parameter, add it
+          if (!inputUrlParams.has(key)) {
+            inputUrlParams.append(key, value);
+          }
+        }
+      
+        // Construct the final URL
+        const finalUrl = inputUrlObj.origin + inputUrlObj.pathname + '?' + inputUrlParams.toString();
+        console.log(finalUrl)
+        return finalUrl;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    function atomiFormatDate(options = { slated: false, addDate: 0 }) {
+      try {
+        const defaultOptions = {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        };
+
+        const today = new Date();
+
+        if (options.slated) {
+          const slatedDate = new Date(today);
+          slatedDate.setDate(slatedDate.getDate() + (options.addDate || 0));
+
+          const day = slatedDate.getDate().toString().padStart(2, "0");
+          const month = (slatedDate.getMonth() + 1).toString().padStart(2, "0");
+          const year = slatedDate.getFullYear();
+          return `${day}/${month}/${year}`;
+        }
+
+        if(options.addDate){
+          today.setDate(today.getDate()+options.addDate)
+        }
+        const formattedDate = today.toLocaleDateString(undefined, defaultOptions);
+
+        return formattedDate;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    function atomiFormatTime() {
+      try {
+        const now = new Date();
+        return now.toLocaleTimeString(undefined, {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    function runDelayedFunctions(data) {
+      try {
+        document.querySelectorAll('.atomicat-delay').forEach(el => el.classList.remove('atomicat-delay'));
+        if(data?.setDisplayed){
+          localStorage.setItem(data?.setDisplayed, true);
+        }
+        
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
+    (function() {
+      try {
+        document.addEventListener('DOMContentLoaded', function () {
+          document.addEventListener("keydown", function (e) {
+            e.ctrlKey && e.preventDefault();
+          }),
+          (document.onkeydown = function (e) {
+            if (123 == e.keyCode) return !1;
+          }),
+          document.addEventListener("contextmenu", (e) => e.preventDefault());
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+    
+	
+</script>
 
     
 </body>
