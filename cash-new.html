@@ -448,12 +448,26 @@
 
         // CTA button click handler
         function handleClick() {
-            const a = document.createElement('a');
-            a.href = 'https://glstrck.com/aff_c?offer_id=76&aff_id=18892';
-            a.rel = 'noreferrer';
-            a.target = '_blank';
-            a.click();
-        }
+            const baseUrl = 'https://glstrck.com/aff_c?offer_id=76&aff_id=18892';
+    
+    // Get URL parameters from current page
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Create the final URL
+    let finalUrl = baseUrl;
+    
+    // Add any additional parameters from the current URL
+    urlParams.forEach((value, key) => {
+        finalUrl += `&${key}=${value}`;
+    });
+    
+    // Create and click the link
+    const a = document.createElement('a');
+    a.href = finalUrl;
+    a.rel = 'noreferrer';
+    a.target = '_blank';
+    a.click();
+}
 
         // Make all cards clickable
         document.querySelectorAll('.card, .rewards-img').forEach(element => {
@@ -462,7 +476,6 @@
         });
     </script>
 
-<script>document.addEventListener("DOMContentLoaded",(()=>{document.querySelectorAll("a").forEach((e=>{e.getAttribute("href")?.includes("#")||(e.getAttribute("href")?.includes("?")?e.setAttribute("href",e.getAttribute("href")+window.location.search.replace("?","&")):e.getAttribute("href")?e.setAttribute("href",e.getAttribute("href")+window.location.search):"")}))}));</script>	
 
     
 </body>
