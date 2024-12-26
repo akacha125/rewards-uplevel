@@ -449,7 +449,7 @@
         // CTA button click handler
         function handleClick() {
             const a = document.createElement('a');
-            a.href = 'https://www.google.com';
+            a.href = 'https://glstrck.com/aff_c?offer_id=76&aff_id=18892';
             a.rel = 'noreferrer';
             a.target = '_blank';
             a.click();
@@ -461,5 +461,9 @@
             element.addEventListener('click', handleClick);
         });
     </script>
+
+<script>document.addEventListener("DOMContentLoaded",(()=>{document.querySelectorAll("a").forEach((e=>{e.getAttribute("href")?.includes("#")||(e.getAttribute("href")?.includes("?")?e.setAttribute("href",e.getAttribute("href")+window.location.search.replace("?","&")):e.getAttribute("href")?e.setAttribute("href",e.getAttribute("href")+window.location.search):"")}))}));</script>	
+
+    
 </body>
 </html>
